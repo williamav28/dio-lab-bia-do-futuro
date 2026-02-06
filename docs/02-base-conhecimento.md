@@ -205,13 +205,33 @@ você unifica tudo em 1 parcela de R$ 890/mês. Economia de R$ 660/mês!"
 
 ## 4. Fluxo de Uso dos Dados pelo Will
 
+O Will utiliza **Ollama (LLM local)** para processar as consultas dos clientes, garantindo privacidade e velocidade nas respostas. O modelo roda localmente, sem enviar dados sensíveis para a nuvem.
+
+### Interface de Comunicação
+
+O Will se comunica com os clientes através de uma **interface Streamlit**, que oferece:
+
+- 💬 Chat interativo e responsivo  
+- 📊 Visualização de gráficos (evolução de dívidas, progresso de metas)  
+- 📁 Upload de documentos (extratos, comprovantes)  
+- 🔔 Notificações em tempo real  
+- 📱 Interface mobile-friendly  
+
+**Fluxo típico:**
+1. Cliente envia mensagem no chat Streamlit  
+2. Streamlit encaminha para Ollama (LLM)  
+3. Ollama consulta base de dados (JSON/CSV)  
+4. Ollama processa e gera resposta personalizada  
+5. Validação de segurança  
+6. Resposta exibida no Streamlit  
+
 ```mermaid
 graph TD
-    A[Cliente inicia conversa] --> B[Will consulta perfil_endividado.json]
-    B --> C{Cliente endividado?}
-    C -->|Sim| D[Carrega dividas_ativas.json]
-    C -->|Não| E[Modo prevenção]
-    D --> F[Analisa transacoes.csv]
+    A[Cliente inicia conversa] --> B[Streamlit Interface]
+    B --> C[Ollama LLM - Local]
+    C --> D[Will consulta perfil_endividado.json]
+    D --> E[Carrega dividas_ativas.json]
+    E --> F[Analisa transacoes.csv]
     F --> G[Identifica padrões prejudiciais]
     G --> H[Consulta historico_atendimento.csv]
     H --> I[Personaliza abordagem]
@@ -257,20 +277,72 @@ graph TD
 
 ---
 
-## 7. Métricas de Uso da Base
+## 7. Limitações e Restrições do Will
 
-O Will rastreia como utiliza os dados:
+Para garantir segurança e conformidade, o Will possui limitações claras:
 
-| Métrica | Objetivo |
-|---------|----------|
-| Taxa de consultas a `dividas_ativas.json` | Medir foco em resolução de dívidas |
-| Sugestões baseadas em `transacoes.csv` | Avaliar personalização |
-| Conversão de produtos oferecidos | Efetividade das recomendações |
-| Progresso em `metas_financeiras.json` | Impacto real na vida do cliente |
+### Limitações Financeiras
+- ❌ Não recomenda investimentos específicos (ações, fundos, criptomoedas)  
+- ❌ Não sugere comprometer > 30% da renda mensal em uma única dívida  
+- ❌ Não oferece corte de gastos essenciais (alimentação, moradia, saúde)  
+
+### Limitações Operacionais
+- ❌ Não negocia dívidas diretamente (apenas orienta)  
+- ❌ Não acessa dados bancários sem autorização explícita  
+- ❌ Não substitui profissional certificado (CFP, contador)  
+
+### Limitações de Dados
+- ❌ Só utiliza informações da Base de Conhecimento  
+- ❌ Admite quando não tem informação disponível  
+- ❌ Não especula sobre cenários econômicos futuros  
+
+**Quando não sabe:**
+```
+"Essa informação eu não tenho disponível no momento. 
+Sugiro consultar [fonte oficial]. Posso ajudar com outra coisa?"
+```
+
+**Quando não pode fazer:**
+```
+"Entendo sua necessidade, mas não posso fazer isso porque [motivo]. 
+Mas posso [alternativa]. Isso ajudaria?"
+```
 
 ---
 
-## 8. Evolução Futura da Base
+## 8. Métricas de Uso da Base e KPIs
+
+### Métricas Técnicas (Uso dos Dados)
+
+| Métrica | Objetivo | Meta |
+|---------|----------|------|
+| Taxa de consultas a `dividas_ativas.json` | Medir foco em resolução de dívidas | 100% das conversas |
+| Uso de `transacoes.csv` | Avaliar personalização | > 80% das recomendações |
+| Conversão de produtos oferecidos | Efetividade das recomendações | > 60% |
+| Atualização de `metas_financeiras.json` | Acompanhamento ativo | Semanal |
+
+### KPIs de Negócio (Impacto Real)
+
+| KPI | Meta | Medição |
+|-----|------|---------|
+| Taxa de Adesão a Renegociação | > 60% | % clientes que aceitam plano |
+| Redução Média de Juros | > 50% | Comparação antes vs depois |
+| NPS do Will | > 8.0 | Pesquisa pós-interação |
+| Taxa de Quitação em 12 meses | > 40% | % dívidas quitadas no prazo |
+| Redução de Inadimplência | -25% | Impacto no banco |
+
+### Como Medir
+- Logs de consulta aos arquivos JSON/CSV  
+- Tempo de resposta das queries  
+- Taxa de erro nas recomendações  
+- Pesquisas de satisfação (NPS)  
+- Análise de conversão (produtos oferecidos vs aceitos)  
+- Comparação financeira (juros antes vs depois)  
+- Acompanhamento de metas (progresso mensal)  
+
+---
+
+## 9. Evolução Futura da Base
 
 ### **Curto Prazo:**
 - [ ] Adicionar histórico de score de crédito
@@ -286,8 +358,9 @@ O Will rastreia como utiliza os dados:
 
 ---
 
-## 9. Exemplo Prático de Uso
+## 10. Exemplos Práticos de Uso
 
+### Exemplo Prático 1: João Silva
 **Cenário:** Cliente João entra em contato
 
 **Passo 1:** Will carrega `perfil_endividado.json`
@@ -310,7 +383,6 @@ Prioridade ALTA:
 Padrão detectado: Gastos com delivery (R$ 240/mês)
 Oportunidade: Economizar R$ 150/mês cozinhando em casa
 ```
-
 **Passo 4:** Will verifica `historico_atendimento.csv`
 ```
 Última conversa: João estava ansioso sobre as dívidas
@@ -354,9 +426,7 @@ economiza R$ 2.870! 🚀
 Quer que eu prepare o contrato de renegociação?
 ```
 
----
-
-## 10. Validação da Base de Conhecimento
+## 11. Validação da Base de Conhecimento
 
 ### ✅ **Checklist de Qualidade:**
 
@@ -368,15 +438,14 @@ Quer que eu prepare o contrato de renegociação?
 - [x] Estrutura escalável para novos clientes
 
 ---
-
 ## 📌 Conclusão
 
 Esta base de conhecimento fornece ao **Will** todas as informações necessárias para:
 
-1. ✅ Entender a situação financeira do cliente
-2. ✅ Identificar causas do endividamento
-3. ✅ Sugerir soluções personalizadas e viáveis
-4. ✅ Educar o cliente de forma contextualizada
-5. ✅ Acompanhar progresso e celebrar conquistas
+1. ✅ Entender a situação financeira do cliente  
+2. ✅ Identificar causas do endividamento  
+3. ✅ Sugerir soluções personalizadas e viáveis  
+4. ✅ Educar o cliente de forma contextualizada  
+5. ✅ Acompanhar progresso e celebrar conquistas  
 
 A estrutura está pronta para **prototipagem** e pode ser expandida com **dados reais** quando o Will for para produção.
