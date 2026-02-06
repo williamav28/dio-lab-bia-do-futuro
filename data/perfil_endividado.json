@@ -1,1 +1,48 @@
-
+{
+  "cliente": {
+    "id": "CLI_12345",
+    "nome": "João Silva",
+    "idade": 34,
+    "estado_civil": "casado",
+    "dependentes": 2,
+    "profissao": "Analista Administrativo",
+    "tempo_emprego": "3 anos"
+  },
+  "situacao_financeira": {
+    "renda_mensal": 3500.00,
+    "renda_conjuge": 2200.00,
+    "renda_total": 5700.00,
+    "gastos_fixos_mensais": 4250.00,
+    "margem_disponivel": 1450.00,
+    "score_credito": 450,
+    "classificacao_risco": "alto"
+  },
+  "dividas": {
+    "total_dividas": 18750.00,
+    "percentual_renda": "328%",
+    "tempo_endividado": "18 meses",
+    "quantidade_credores": 5,
+    "divida_mais_antiga": "cartao_credito_nubank",
+    "status_negativado": true,
+    "orgaos_restricao": ["SPC", "Serasa"]
+  },
+  "comportamento_financeiro": {
+    "usa_cartao_credito": true,
+    "paga_fatura_total": false,
+    "percentual_pagamento_fatura": "mínimo",
+    "tem_emprestimo_ativo": true,
+    "usa_cheque_especial": false,
+    "frequencia_atrasos": "mensal",
+    "principal_problema": "gastos com cartão descontrolados"
+  },
+  "objetivos": {
+    "principal": "quitar todas as dívidas",
+    "secundario": "aprender a controlar gastos",
+    "prazo_desejado": "24 meses",
+    "motivacao": "comprar casa própria no futuro"
+  },
+  "nivel_conhecimento_financeiro": "baixo",
+  "ja_tentou_renegociar": true,
+  "data_cadastro": "2024-01-10",
+  "ultima_atualizacao": "2024-02-20"
+}
