@@ -1,0 +1,39 @@
+{
+  "metas": [
+    {
+      "id": "META_001",
+      "titulo": "Quitar cartão Nubank",
+      "tipo": "divida",
+      "valor_objetivo": 8200.00,
+      "prazo_meses": 12,
+      "prioridade": "alta",
+      "estrategia": "renegociar com desconto de 35% e parcelar em 12x",
+      "valor_mensal_necessario": 445.00,
+      "status": "em_planejamento",
+      "data_criacao": "2024-02-01"
+    },
+    {
+      "id": "META_002",
+      "titulo": "Criar reserva de emergência",
+      "tipo": "poupanca",
+      "valor_objetivo": 3000.00,
+      "prazo_meses": 18,
+      "prioridade": "media",
+      "estrategia": "guardar R$ 170 por mês após quitar dívida prioritária",
+      "valor_mensal_necessario": 170.00,
+      "status": "aguardando",
+      "data_criacao": "2024-02-01"
+    },
+    {
+      "id": "META_003",
+      "titulo": "Eliminar uso do cartão de crédito",
+      "tipo": "habito",
+      "prazo_meses": 6,
+      "prioridade": "alta",
+      "estrategia": "usar apenas débito e dinheiro, congelar cartão",
+      "status": "em_andamento",
+      "progresso": "45%",
+      "data_criacao": "2024-01-15"
+    }
+  ]
+}
