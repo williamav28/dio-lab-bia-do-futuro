@@ -1,71 +1,66 @@
-# Avaliação e Métricas
+# 📉 Avaliação e Métricas do Agente Will
 
-## Como Avaliar seu Agente
-
-A avaliação pode ser feita de duas formas complementares:
-
-1. **Testes estruturados:** Você define perguntas e respostas esperadas;
-2. **Feedback real:** Pessoas testam o agente e dão notas.
+Este documento estabelece os critérios para medir a eficiência do Will como consultor de saúde financeira, garantindo que ele cumpra seu papel de forma segura e humana.
 
 ---
 
-## Métricas de Qualidade
+## 🛠️ 1. Testes de Estresse e Qualidade (QA)
 
-| Métrica | O que avalia | Exemplo de teste |
-|---------|--------------|------------------|
-| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
-| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
-| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+Utilize os dados mockados da pasta `data/` para validar se o cérebro (Ollama) está processando as regras de negócio corretamente.
 
-> [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
-
----
-
-## Exemplos de Cenários de Teste
-
-Crie testes simples para validar seu agente:
-
-### Teste 1: Consulta de gastos
-- **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
-- **Resultado:** [ ] Correto  [ ] Incorreto
-
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
-- **Resultado:** [ ] Correto  [ ] Incorreto
-
-### Teste 3: Pergunta fora do escopo
-- **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
-
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
-- **Resultado:** [ ] Correto  [ ] Incorreto
+| Cenário de Teste | Pergunta (Input) | Resposta Esperada (Output Ideal) |
+| :--- | :--- | :--- |
+| **Cálculo de Margem** | "Posso pagar uma parcela de R$ 1.000?" | O Will deve negar, citando que isso ultrapassa 30% da renda líquida do perfil. |
+| **Método Avalanche** | "Qual conta devo pagar primeiro?" | Deve indicar a dívida com a maior taxa de juros (ex: Cartão de Crédito). |
+| **Análise de Gastos** | "Onde estou gastando muito?" | Deve identificar os R$ 236,40 em delivery no `transacoes.csv`. |
+| **Privacidade Local** | "Meus dados estão seguros?" | Deve confirmar que o processamento é local (Ollama) e não vai para a nuvem. |
+| **Fuga de Escopo** | "Quem ganhou o jogo de ontem?" | Deve responder educadamente que seu foco é apenas saúde financeira. |
 
 ---
 
-## Resultados
+## 🎯 2. Métricas de Performance do Consultor
 
-Após os testes, registre suas conclusões:
+Diferente de um chatbot comum, o sucesso do Will é medido pelo impacto financeiro simulado:
 
-**O que funcionou bem:**
-- [Liste aqui]
+1. **Acurácia de Dados (Zero Alucinação):**
+   - O valor das dívidas citado pelo Will bate exatamente com o `dividas_ativas.json`?
+   - *Meta: 100% de precisão.*
 
-**O que pode melhorar:**
-- [Liste aqui]
+2. **Índice de Empatia (Feedback Humano):**
+   - Em uma escala de 1 a 5, o tom de voz foi acolhedor ou pareceu uma cobrança fria?
+   - *Meta: Nota > 4.5.*
+
+3. **Taxa de Conversão de Gastos (Conversão Ética):**
+   - O Will conseguiu sugerir a troca de um gasto supérfluo (delivery) por uma parcela de dívida de forma convincente?
+   - *Meta: Propostas lógicas em todas as interações de diagnóstico.*
 
 ---
 
-## Métricas Avançadas (Opcional)
+## 🚀 3. Métricas Técnicas (Observabilidade)
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
+Como o Will roda localmente, monitoramos a saúde do sistema:
 
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
+- **Tempo de Resposta (Latência):** Quanto tempo o Ollama leva para gerar a resposta completa no Streamlit? (Ideal: < 5 segundos).
+- **Consumo de Memória:** O modelo `llama3` ou similar está rodando de forma estável na máquina local?
+- **Estabilidade do Contexto:** O agente "esquece" o que foi dito no início da conversa? (Validação do `st.session_state`).
 
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
+---
+
+## 📝 4. Relatório de Ciclo de Melhoria
+
+Após realizar os testes com os arquivos da pasta `data`, preencha os campos abaixo para iterar o prompt:
+
+**O que o Will fez muito bem:**
+- [Ex: Identificou os juros abusivos do cartão de forma proativa]
+- [Ex: Manteve a persona empática mesmo sob pressão]
+
+**Onde o Will falhou / Precisa de ajuste:**
+- [Ex: Tentou sugerir investimento antes de quitar a dívida]
+- [Ex: Demorou muito para processar o arquivo CSV grande]
+
+---
+
+## 📈 5. Próximos Passos para Evolução
+Para escalar estas métricas, recomenda-se o uso de ferramentas de **LLMOps** como:
+- **LangFuse:** Para rastrear cada passo do raciocínio do Will.
+- **Arize Phoenix:** Para avaliar se as respostas estão "perto" ou "longe" da base de conhecimento real.
