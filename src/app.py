@@ -7,17 +7,27 @@ import os
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Will - Seu Guia Financeiro", page_icon="💰")
 
-# --- CARREGAMENTO DE DADOS (Base de Conhecimento) ---
+# --- AJUSTE DE CAMINHOS ---
+# Definimos o caminho base subindo um nível a partir de onde o app.py está
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data")
+
+# --- CARREGAMENTO DE DADOS ---
 def load_data():
     try:
-        with open('data/perfil_endividado.json', 'r') as f:
+        # Usamos os caminhos completos construídos dinamicamente
+        with open(os.path.join(DATA_PATH, 'perfil_endividado.json'), 'r', encoding='utf-8') as f:
             perfil = json.load(f)
-        with open('data/dividas_ativas.json', 'r') as f:
+        
+        with open(os.path.join(DATA_PATH, 'dividas_ativas.json'), 'r', encoding='utf-8') as f:
             dividas = json.load(f)
-        transacoes = pd.read_csv('data/transacoes.csv')
+            
+        transacoes = pd.read_csv(os.path.join(DATA_PATH, 'transacoes.csv'), encoding='utf-8')
+        
         return perfil, dividas, transacoes
     except FileNotFoundError as e:
-        st.error(f"Erro: Arquivo não encontrado - {e}")
+        st.error(f"Erro: Arquivo não encontrado no caminho: {DATA_PATH}")
+        st.info("Verifique se a pasta 'data' está no mesmo nível da pasta 'src'.")
         return None, None, None
 
 perfil, dividas, transacoes = load_data()
