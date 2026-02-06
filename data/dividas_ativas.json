@@ -1,0 +1,90 @@
+{
+  "dividas": [
+    {
+      "id": "DIV_001",
+      "credor": "Nubank",
+      "tipo": "cartao_credito",
+      "valor_original": 5800.00,
+      "valor_atual": 8200.00,
+      "juros_mes": 12.5,
+      "data_inicio": "2023-08-15",
+      "dias_atraso": 120,
+      "parcela_minima": 320.00,
+      "status": "negativado",
+      "prioridade": "alta",
+      "pode_renegociar": true,
+      "desconto_vista": "35%"
+    },
+    {
+      "id": "DIV_002",
+      "credor": "Banco Inter",
+      "tipo": "emprestimo_pessoal",
+      "valor_original": 8000.00,
+      "valor_atual": 6500.00,
+      "juros_mes": 5.9,
+      "parcela_atual": 450.00,
+      "parcelas_pagas": 8,
+      "parcelas_restantes": 16,
+      "data_inicio": "2023-10-01",
+      "dias_atraso": 0,
+      "status": "em_dia",
+      "prioridade": "media",
+      "pode_renegociar": true
+    },
+    {
+      "id": "DIV_003",
+      "credor": "C&A",
+      "tipo": "carnê_loja",
+      "valor_original": 1200.00,
+      "valor_atual": 1450.00,
+      "juros_mes": 8.9,
+      "parcela_atual": 150.00,
+      "parcelas_pagas": 3,
+      "parcelas_restantes": 9,
+      "data_inicio": "2024-01-05",
+      "dias_atraso": 30,
+      "status": "atrasado",
+      "prioridade": "baixa",
+      "pode_renegociar": true
+    },
+    {
+      "id": "DIV_004",
+      "credor": "Vivo",
+      "tipo": "conta_telefone",
+      "valor_original": 450.00,
+      "valor_atual": 680.00,
+      "juros_mes": 10.0,
+      "data_inicio": "2023-12-10",
+      "dias_atraso": 90,
+      "status": "negativado",
+      "prioridade": "media",
+      "pode_renegociar": true,
+      "desconto_vista": "50%"
+    },
+    {
+      "id": "DIV_005",
+      "credor": "Casas Bahia",
+      "tipo": "parcelamento",
+      "valor_original": 2400.00,
+      "valor_atual": 1920.00,
+      "juros_mes": 0.0,
+      "parcela_atual": 180.00,
+      "parcelas_pagas": 4,
+      "parcelas_restantes": 12,
+      "data_inicio": "2023-11-20",
+      "dias_atraso": 0,
+      "status": "em_dia",
+      "prioridade": "baixa",
+      "pode_renegociar": false
+    }
+  ],
+  "resumo": {
+    "total_dividas": 18750.00,
+    "total_juros_acumulados": 3950.00,
+    "total_principal": 14800.00,
+    "valor_mensal_comprometido": 1550.00,
+    "dividas_negativadas": 2,
+    "dividas_em_dia": 2,
+    "dividas_atrasadas": 1
+  }
+}
