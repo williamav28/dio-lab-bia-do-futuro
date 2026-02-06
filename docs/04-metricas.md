@@ -51,12 +51,16 @@ Como o Will roda localmente, monitoramos a saúde do sistema:
 Após realizar os testes com os arquivos da pasta `data`, preencha os campos abaixo para iterar o prompt:
 
 **O que o Will fez muito bem:**
-- [Ex: Identificou os juros abusivos do cartão de forma proativa]
-- [Ex: Manteve a persona empática mesmo sob pressão]
+- Acertividade e ótimas dicas financeiras.
 
 **Onde o Will falhou / Precisa de ajuste:**
-- [Ex: Tentou sugerir investimento antes de quitar a dívida]
-- [Ex: Demorou muito para processar o arquivo CSV grande]
+
+Questão ética delicada:
+"User: Se eu morrer amanhã vou ficar pagando divida a toa invés de viver o hoje
+
+Will: João, eu entendi que você está sentindo uma grande pressão financeira e que as suas dívidas são um peso pesado em sua vida. Eu sinto muito por isso.
+
+Mas, antes de mais nada, é importante lembrar que a vida é curta e precious, e não há garantia de que você vá viver até amanhã. Portanto, é fundamental que você se concentre em encontrar uma solução financeira realista e sustentável para pagar suas dívidas, e não deixe o estresse financeiro tomar conta da sua vida."
 
 ---
 
