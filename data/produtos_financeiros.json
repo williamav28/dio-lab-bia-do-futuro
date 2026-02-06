@@ -1,42 +1,80 @@
-[
-  {
-    "nome": "Tesouro Selic",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "100% da Selic",
-    "aporte_minimo": 30.00,
-    "indicado_para": "Reserva de emergência e iniciantes"
-  },
-  {
-    "nome": "CDB Liquidez Diária",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "102% do CDI",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Quem busca segurança com rendimento diário"
-  },
-  {
-    "nome": "LCI/LCA",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "95% do CDI",
-    "aporte_minimo": 1000.00,
-    "indicado_para": "Quem pode esperar 90 dias (isento de IR)"
-  },
-  {
-    "nome": "Fundo Multimercado",
-    "categoria": "fundo",
-    "risco": "medio",
-    "rentabilidade": "CDI + 2%",
-    "aporte_minimo": 500.00,
-    "indicado_para": "Perfil moderado que busca diversificação"
-  },
-  {
-    "nome": "Fundo de Ações",
-    "categoria": "fundo",
-    "risco": "alto",
-    "rentabilidade": "Variável",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Perfil arrojado com foco no longo prazo"
-  }
-]
+{
+  "produtos_renegociacao": [
+    {
+      "id": "P001",
+      "nome": "Renegociação de Cartão de Crédito",
+      "tipo": "renegociacao",
+      "descricao": "Renegocie sua dívida do cartão com desconto nos juros e parcelamento em até 24x",
+      "taxa_juros_atual": "12.5% ao mês",
+      "taxa_juros_negociada": "3.9% ao mês",
+      "desconto_entrada": "até 40% com entrada à vista",
+      "prazo_maximo": "24 meses",
+      "valor_minimo": 500.00,
+      "beneficios": [
+        "Redução de até 68% nos juros",
+        "Parcelas que cabem no bolso",
+        "Nome limpo em até 6 meses"
+      ]
+    },
+    {
+      "id": "P002",
+      "nome": "Empréstimo Consolidador",
+      "tipo": "consolidacao",
+      "descricao": "Una todas as suas dívidas em um único empréstimo com juros menores",
+      "taxa_juros": "2.9% ao mês",
+      "prazo_maximo": "36 meses",
+      "valor_maximo": 50000.00,
+      "requisitos": [
+        "Ter renda comprovada",
+        "Não ter restrições no SPC/Serasa"
+      ],
+      "beneficios": [
+        "Apenas uma parcela por mês",
+        "Juros muito menores",
+        "Organização financeira"
+      ]
+    },
+    {
+      "id": "P003",
+      "nome": "Crédito Consignado",
+      "tipo": "emprestimo",
+      "descricao": "Empréstimo com desconto em folha de pagamento, ideal para substituir dívidas caras",
+      "taxa_juros": "1.8% ao mês",
+      "prazo_maximo": "96 meses",
+      "valor_maximo": "35% do salário líquido",
+      "publico": "CLT, aposentados e pensionistas",
+      "beneficios": [
+        "Menor taxa do mercado",
+        "Aprovação rápida",
+        "Substitui dívidas caras"
+      ]
+    }
+  ],
+  "produtos_prevencao": [
+    {
+      "id": "P004",
+      "nome": "Conta Digital Sem Tarifas",
+      "tipo": "conta_corrente",
+      "descricao": "Conta sem mensalidade, sem cheque especial, evita endividamento",
+      "tarifa_mensal": 0.00,
+      "beneficios": [
+        "Zero tarifas",
+        "Sem cheque especial (evita dívidas)",
+        "Cashback em compras"
+      ]
+    },
+    {
+      "id": "P005",
+      "nome": "Cartão de Crédito Controlado",
+      "tipo": "cartao_credito",
+      "descricao": "Cartão com limite baixo e alertas de gastos para evitar descontrole",
+      "limite_inicial": 500.00,
+      "anuidade": 0.00,
+      "beneficios": [
+        "Limite controlado",
+        "Alertas de gastos em tempo real",
+        "Bloqueio automático ao atingir 80% do limite"
+      ]
+    }
+  ]
+}
